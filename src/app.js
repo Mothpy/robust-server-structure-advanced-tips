@@ -6,6 +6,7 @@ const pastesRouter = require("./pastes/pastes.router");
 
 app.use(express.json());
 
+// use routes for users and pastes 
 app.use("/users", usersRouter); 
 app.use("/pastes", pastesRouter); 
 

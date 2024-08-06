@@ -1,4 +1,8 @@
+// Create a new Express router instance with the mergeParams option set to true.
+// This allows the router to access parameters from its parent router.
 const router = require("express").Router({ mergeParams: true });
+
+// import controller file 
 const controller = require("./pastes.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
 
@@ -9,7 +13,7 @@ router.route("/:pasteId")
     .delete(controller.delete)
     .all(methodNotAllowed);
 
-// route for list 
+// route for pastes list 
 router.route("/")
     .get(controller.list)
     .post(controller.create)

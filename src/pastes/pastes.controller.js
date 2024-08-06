@@ -1,7 +1,9 @@
+
+// import pastes data file 
 const pastes = require("../data/pastes-data");
 
 
-// list 
+// list of pastes 
 function list(req, res) {
   const { userId } = req.params;
   res.json({ data: pastes.filter(userId ? paste => paste.user_id == userId : () => true) });
@@ -9,7 +11,7 @@ function list(req, res) {
 
 let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste.id), 0)
 
-// check body data 
+// check if paste has body data 
 function bodyDataHas(propertyName) {
   return function (req, res, next) {
     const { data = {} } = req.body;
@@ -120,6 +122,8 @@ function destroy(req, res) {
   res.sendStatus(204);
 }
 
+
+// export all functions 
 module.exports = {
   create: [
       bodyDataHas("name"),
